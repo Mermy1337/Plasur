@@ -2,6 +2,7 @@ package mermy.plasur;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -136,13 +137,14 @@ public class MainActivity extends Activity {
         findViewById(R.id.exit_button).setOnTouchListener(mDelayHideTouchListener);
 
         // Here is our Code!
-
         final Button exitButton = (Button) findViewById(R.id.exit_button);
         exitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
+
+
     }
 
     @Override
@@ -162,5 +164,12 @@ public class MainActivity extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    //Game switches to start activity when start button is pressed
+    public void startGame(View view) {
+        Intent startGameIntent = new Intent(this, gameScreen.class);
+        startActivity(startGameIntent);
+
     }
 }
